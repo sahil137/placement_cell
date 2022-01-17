@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema(
 );
 
 // create a virtual property to set hashed password
-
 userSchema.virtual('password').set(function (value) {
   this.passwordHash = bcrypt.hashSync(value, 12);
 });
