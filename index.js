@@ -14,8 +14,19 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// for authentication
+app.use(
+  session({
+    secret: 'randomsecretkey',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 100 },
+  })
+);
 
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
+// for authentication
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
