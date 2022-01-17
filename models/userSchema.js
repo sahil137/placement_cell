@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    password: {
+    passwordHash: {
       type: String,
       required: true,
     },
@@ -20,9 +20,16 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// create a virtual property to set hashed password
+
+userSchema.virtual('password').set(function (value) {
+  this.passwordHash = bcrypt.hashSync(value, 12);
+});
+
 // function to compare hashed password
 userSchema.methods.isPasswordCorrect = function (password) {
-  return bcrypt.compareSync(password, this.password);
+  console.log(password, this.passwordHash);
+  return bcrypt.compareSync(password, this.passwordHash);
 };
 
 const User = mongoose.model('User', userSchema);
