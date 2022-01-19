@@ -10,7 +10,7 @@ const userController = require('../controllers/userControllers');
 // router.get('/home', userController.homePage);
 router.get('/signup', userController.signup);
 router.get('/signin', userController.signin);
-router.get('/signout', userController.signout);
+router.get('/signout', passport.checkAuthentication, userController.signout);
 
 // ------------------------- Post Request -----------------------
 

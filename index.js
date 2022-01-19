@@ -1,7 +1,6 @@
 const express = require('express');
 const db = require('./config/mongoose');
 const app = express();
-
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-startegy');

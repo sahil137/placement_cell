@@ -1,19 +1,24 @@
 const User = require('../models/userSchema');
 
-// ----------------- Get requests ----------------------
-
 // render sign up page
 module.exports.signup = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect('back');
+  }
   res.render('signup');
 };
 
 // render sign in page
 module.exports.signin = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect('back');
+  }
   res.render('signin');
 };
 
 // create session
 module.exports.createSession = function (req, res) {
+  console.log('Session created successfully');
   return res.redirect('/');
 };
 
@@ -22,8 +27,6 @@ module.exports.signout = function (req, res) {
   req.logout();
   return res.redirect('/signin');
 };
-
-// -------------- Posts requests ---------------------
 
 // create user
 module.exports.createUser = async function (req, res) {
@@ -59,5 +62,3 @@ module.exports.createUser = async function (req, res) {
     res.redirect('back');
   }
 };
-
-// login user

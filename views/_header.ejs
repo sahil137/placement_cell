@@ -2,10 +2,12 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Coding Ninjas Placement Cell</a>
-      <% if(locals.user) { %>
+      <% if (locals.user) { %>
       <a class="navbar-brand" href="/">Welcome <%=locals.user.name%></a>
       <form class="d-flex">
-        <a class="navbar-brand" href="/users/signout">Signout</a>
+        <a class="navbar-brand" href="/users/company">Company List</a>
+        <a class="navbar-brand" href="/users/download-csv">Download Report</a>
+        <a class="navbar-brand" href="/users/signout">Sign out</a>
       </form>
       <% } %>
     </div>

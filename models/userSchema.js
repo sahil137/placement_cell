@@ -27,7 +27,6 @@ userSchema.virtual('password').set(function (value) {
 
 // function to compare hashed password
 userSchema.methods.isPasswordCorrect = function (password) {
-  console.log(password, this.passwordHash);
   return bcrypt.compareSync(password, this.passwordHash);
 };
 

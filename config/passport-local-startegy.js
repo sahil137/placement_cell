@@ -36,7 +36,6 @@ passport.deserializeUser(function (id, done) {
       console.log('Error in finding user--> Passport');
       return done(err);
     }
-
     return done(null, user);
   });
 });
@@ -46,7 +45,7 @@ passport.checkAuthentication = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  return res.redirect('/employee/signin');
+  return res.redirect('/users/signin');
 };
 
 // set authenticated user for views
