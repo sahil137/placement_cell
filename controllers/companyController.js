@@ -79,3 +79,35 @@ module.exports.scheduleInterview = async function (req, res) {
     return res.redirect('back');
   }
 };
+
+// update status of interview
+module.exports.updateStatus = async function (req, res) {
+  const { id } = req.params;
+  const { companyName, companyResult } = req.body;
+  try {
+    const student = await Student.findById(id);
+    if (student && student.interviews.length > 0) {
+      for (let company of student.interviews) {
+        if (company.company === companyName) {
+          company.result = companyResult;
+          student.save();
+          break;
+        }
+      }
+    }
+    const company = await Company.findOne({ name: companyName });
+    if (company) {
+      for (let std of company.students) {
+        if (std.student._id === id) {
+          std.result = companyResult;
+          company.save();
+        }
+      }
+    }
+    console.log('Interview Status Changed Successfully');
+    return res.redirect('back');
+  } catch (error) {
+    console.log(`Error in updating status: ${error}`);
+    res.redirect('back');
+  }
+};

@@ -23,5 +23,10 @@ router.post(
   passport.checkAuthentication,
   companyController.scheduleInterview
 );
+router.post(
+  '/update-status/:id',
+  passport.checkAuthentication,
+  companyController.updateStatus
+);
 
 module.exports = router;

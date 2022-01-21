@@ -56,22 +56,21 @@
                     align-items: center;
                     justify-content: center;
                   "
-                  action="/company/update/<%=student.id%>"
+                  action="/company/update-status/<%=student.id%>"
                   method="post"
                 >
                   <input
                     hidden
                     type="text"
-                    name="cname"
-                    value="<%=student.interviews[i].companyname%>"
+                    name="companyName"
+                    value="<%=student.interviews[i].company%>"
                   />
 
                   <select
                     class="form-select"
                     aria-label="Default select example"
-                    name="companyresult"
-                    id="istatus"
-                    disabled
+                    name="companyResult"
+                    id="status"
                     style="min-width: 130px"
                   >
                     <option selected id="delete-options">
@@ -83,15 +82,8 @@
                     <option value="Pending">Pending</option>
                   </select>
 
-                  <a
-                    type="button"
-                    class="btn btn-warning btn-small m-2"
-                    id="chngebutton"
-                    >Change</a
-                  >
-
                   <button type="submit" class="btn btn-primary btn-small m-2">
-                    UPDATE
+                    Update
                   </button>
                 </form>
               </td>
@@ -102,7 +94,7 @@
       </div>
       <%}else{%>
       <div class="w-75 mx-auto mt-5">
-        <h2>NO RECORDS ARE FOUND.............:(</h2>
+        <h2>No Records found(</h2>
       </div>
 
       <%}%>
