@@ -45,3 +45,15 @@ module.exports.createStudent = async function (req, res) {
     return res.redirect('back');
   }
 };
+
+// edit student
+module.exports.deleteStudent = async function (req, res) {
+  const { id } = req.params;
+  try {
+    await Student.findByIdAndDelete(id);
+    return res.redirect('back');
+  } catch (error) {
+    console.log('Error in deleting student');
+    return res.redirect('back');
+  }
+};

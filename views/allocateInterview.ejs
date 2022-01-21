@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('_bootstrap_meta')%>
+    <title>INTERVIEW</title>
+  </head>
+
+  <body>
+    <%- include('_header') %>
+
+    <form
+      class="w-50 mx-auto mt-4"
+      action="/company/scheduleInterview"
+      method="POST"
+    >
+      <h3>Schedule Interview</h3>
+      <div class="mb-3">
+        <label for="batchname" class="form-label">Batch</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="batchname"
+          id="batchname"
+        >
+          <option selected disabled>Select Batch</option>
+
+          <%for(let batch of array){%>
+          <option value="<%=batch%>"><%= batch %></option>
+          <%}%>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="studentname" class="form-label">Name</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="studentname"
+          id="studentname"
+        >
+        <option selected disabled>Select Student</option>
+
+        <%for(let student of students){%>
+        <option value="<%=student.name%>"><%= student.name %></option>
+        <%}%>
+      </select></select>
+      </div>
+
+      <div class="mb-3">
+        <label for="input-companyname" class="form-label">Company</label>
+        <input
+          type="text"
+          class="form-control"
+          id="input-companyname"
+          name="companyname"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="input-date" class="form-label">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="input-date"
+          name="companydate"
+        />
+      </div>
+
+      <div>
+        <div class="d-flex justify-content-start">
+          <a
+            href="/company/"
+            type="button"
+            class="btn btn-primary align-self-center"
+            >Cancel</a
+          >
+        </div>
+        <div class="d-flex justify-content-end" style="margin-top: -38px">
+          <button class="btn btn-primary align-self-center">
+            Schedule Interview
+          </button>
+        </div>
+      </div>
+    </form>
+    <%- include('_bootstrap_script')%>
+  </body>
+</html>

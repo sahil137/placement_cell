@@ -12,6 +12,12 @@ router.get(
   studentController.createStudentPage
 );
 
+router.get(
+  '/delete/:id',
+  passport.checkAuthentication,
+  studentController.deleteStudent
+);
+
 // ------------------- Posts Requests ----------
 router.post(
   '/create-student',
