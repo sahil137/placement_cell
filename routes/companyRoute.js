@@ -18,4 +18,10 @@ router.get(
 
 // -------- Post Requests ---------
 
+router.post(
+  '/schedule-interview',
+  passport.checkAuthentication,
+  companyController.scheduleInterview
+);
+
 module.exports = router;

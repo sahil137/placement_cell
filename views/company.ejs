@@ -43,7 +43,7 @@
             <% for(let student of students){%> <%i=0%> <% while(i<
             student.interviews.length){%>
             <tr class="row-ref">
-              <th scope="row"><%=student.interviews[i].companyname%></th>
+              <th scope="row"><%=student.interviews[i].company%></th>
               <td><%=student.name%></td>
               <td><%=student.email%></td>
               <td><%=student.contactNumber%></td>
@@ -90,7 +90,7 @@
                     >Change</a
                   >
 
-                  <button type="submit" class="btn btn-success btn-small m-2">
+                  <button type="submit" class="btn btn-primary btn-small m-2">
                     UPDATE
                   </button>
                 </form>

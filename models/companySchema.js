@@ -13,7 +13,7 @@ const companySchema = new mongoose.Schema(
           ref: 'Student',
         },
         date: {
-          type: String,
+          type: Date,
           required: true,
         },
         result: {

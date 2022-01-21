@@ -2,25 +2,26 @@
 <html lang="en">
   <head>
     <%- include('_bootstrap_meta')%>
-    <title>INTERVIEW</title>
+    <title>Schedule Interview</title>
   </head>
 
   <body>
     <%- include('_header') %>
 
     <form
-      class="w-50 mx-auto mt-4"
-      action="/company/scheduleInterview"
-      method="POST"
+      class="w-60 mx-auto mt-4"
+      action="/company/schedule-interview"
+      method="post"
+      style="height: 70vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center;"
     >
       <h3>Schedule Interview</h3>
-      <div class="mb-3">
-        <label for="batchname" class="form-label">Batch</label>
+      <!-- <div class="mb-3">
+        <label for="batch" class="form-label">Batch</label>
         <select
           class="form-select"
           aria-label="Default select example"
-          name="batchname"
-          id="batchname"
+          name="batch"
+          id="batch"
         >
           <option selected disabled>Select Batch</option>
 
@@ -28,59 +29,47 @@
           <option value="<%=batch%>"><%= batch %></option>
           <%}%>
         </select>
-      </div>
+      </div> -->
 
       <div class="mb-3">
-        <label for="studentname" class="form-label">Name</label>
+        <label for="name" class="form-label">Name</label>
         <select
           class="form-select"
           aria-label="Default select example"
-          name="studentname"
-          id="studentname"
+          name="id"
+          id="name"
         >
         <option selected disabled>Select Student</option>
 
         <%for(let student of students){%>
-        <option value="<%=student.name%>"><%= student.name %></option>
+        <option value="<%=student.id%>"><%= student.name %></option>
         <%}%>
       </select></select>
       </div>
 
       <div class="mb-3">
-        <label for="input-companyname" class="form-label">Company</label>
+        <label for="company" class="form-label">Company</label>
         <input
           type="text"
           class="form-control"
-          id="input-companyname"
-          name="companyname"
+          id="company"
+          name="company"
         />
       </div>
 
       <div class="mb-3">
-        <label for="input-date" class="form-label">Date</label>
+        <label for="date" class="form-label">Date</label>
         <input
           type="date"
           class="form-control"
-          id="input-date"
-          name="companydate"
+          id="date"
+          name="date"
         />
       </div>
 
-      <div>
-        <div class="d-flex justify-content-start">
-          <a
-            href="/company/"
-            type="button"
-            class="btn btn-primary align-self-center"
-            >Cancel</a
-          >
-        </div>
-        <div class="d-flex justify-content-end" style="margin-top: -38px">
           <button class="btn btn-primary align-self-center">
             Schedule Interview
           </button>
-        </div>
-      </div>
     </form>
     <%- include('_bootstrap_script')%>
   </body>
