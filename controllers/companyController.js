@@ -90,17 +90,19 @@ module.exports.updateStatus = async function (req, res) {
       for (let company of student.interviews) {
         if (company.company === companyName) {
           company.result = companyResult;
-          await student.save();
+          student.save();
           break;
         }
       }
     }
     const company = await Company.findOne({ name: companyName });
+
     if (company) {
       for (let std of company.students) {
-        if (std.student._id === id) {
+        /// compare student id and id passed in params
+        if (std.student.toString() === id) {
           std.result = companyResult;
-          await company.save();
+          company.save();
         }
       }
     }

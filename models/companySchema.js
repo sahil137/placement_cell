@@ -18,7 +18,13 @@ const companySchema = new mongoose.Schema(
         },
         result: {
           type: String,
-          enum: ['Selecetd', 'Not Selected', 'On Hold', 'Pending'],
+          enum: [
+            'On Hold',
+            'Selected',
+            'Pending',
+            'Not Selected',
+            'Did not Attempt',
+          ],
         },
       },
     ],
