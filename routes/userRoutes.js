@@ -7,11 +7,14 @@ const userController = require('../controllers/userControllers');
 
 // ------------------------- Get Requests -----------------------
 
-// router.get('/home', userController.homePage);
 router.get('/signup', userController.signup);
 router.get('/signin', userController.signin);
 router.get('/signout', passport.checkAuthentication, userController.signout);
-
+router.get(
+  '/download-csv',
+  passport.checkAuthentication,
+  userController.downloadCsv
+);
 // ------------------------- Post Request -----------------------
 
 router.post('/create', userController.createUser);

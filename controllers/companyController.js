@@ -45,7 +45,7 @@ module.exports.scheduleInterview = async function (req, res) {
     // if company doesnt exist
     if (!existingCompany) {
       const newCompany = await Company.create({
-        company,
+        name: company,
       });
       newCompany.students.push(obj);
       newCompany.save();
@@ -90,7 +90,7 @@ module.exports.updateStatus = async function (req, res) {
       for (let company of student.interviews) {
         if (company.company === companyName) {
           company.result = companyResult;
-          student.save();
+          await student.save();
           break;
         }
       }
@@ -100,7 +100,7 @@ module.exports.updateStatus = async function (req, res) {
       for (let std of company.students) {
         if (std.student._id === id) {
           std.result = companyResult;
-          company.save();
+          await company.save();
         }
       }
     }
